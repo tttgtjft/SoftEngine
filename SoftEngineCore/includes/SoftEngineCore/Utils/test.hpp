@@ -1,0 +1,5 @@
+namespace SoftEngine {
+
+	int checkGLFW();
+
+}
