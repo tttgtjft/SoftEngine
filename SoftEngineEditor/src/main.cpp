@@ -1,11 +1,22 @@
 #include <iostream>
+#include <memory>
 
-#include <SoftEngineCore/Utils/test.hpp>
+#include <SoftEngineCore/Application.hpp>
+
+class MyApp : public SoftEngine::Application 
+{
+	void on_update() override 
+	{
+		std::cout << "Update frame: " << frame++ << std::endl;
+	}
+
+	int frame = 0;
+};
 
 int main() {
-	std::cout << "Hello from Soft Engine Editor" << std::endl;
+	auto myApp = std::make_unique<MyApp>();
 
-	SoftEngine::checkGLFW();
+	int returnCode = myApp->start(1024, 768, "My first App");
 
-	return 0;
+	return returnCode;
 }

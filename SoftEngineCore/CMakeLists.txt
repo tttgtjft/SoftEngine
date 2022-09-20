@@ -2,9 +2,17 @@ cmake_minimum_required(VERSION 3.24.1 FATAL_ERROR)
 
 set(ENGINE_PROJECT_NAME SoftEngineCore)
 
+set(ENGINE_PUBLIC_INCLUDES
+	includes/SoftEngineCore/Application.hpp
+)
+
+set(ENGINE_PRIVATE_SOURCES
+	src/SoftEngineCore/Application.cpp
+)
+
 add_library(${ENGINE_PROJECT_NAME} STATIC
-	src/SoftEngineCore/Utils/test.cpp
-	includes/SoftEngineCore/Utils/test.hpp
+	${ENGINE_PUBLIC_INCLUDES}
+	${ENGINE_PRIVATE_SOURCES}
 )
 
 target_include_directories(${ENGINE_PROJECT_NAME} PUBLIC includes)
