@@ -4,6 +4,7 @@ set(ENGINE_PROJECT_NAME SoftEngineCore)
 
 set(ENGINE_PUBLIC_INCLUDES
 	includes/SoftEngineCore/Application.hpp
+	includes/SoftEngineCore/Log.hpp
 )
 
 set(ENGINE_PRIVATE_SOURCES

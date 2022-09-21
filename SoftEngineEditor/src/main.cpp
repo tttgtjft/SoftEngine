@@ -7,7 +7,7 @@ class MyApp : public SoftEngine::Application
 {
 	void on_update() override 
 	{
-		std::cout << "Update frame: " << frame++ << std::endl;
+		//std::cout << "Update frame: " << frame++ << std::endl;
 	}
 
 	int frame = 0;

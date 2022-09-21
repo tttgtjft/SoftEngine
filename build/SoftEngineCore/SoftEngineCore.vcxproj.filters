@@ -9,6 +9,9 @@
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes\SoftEngineCore\Application.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes\SoftEngineCore\Log.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\CMakeLists.txt" />
