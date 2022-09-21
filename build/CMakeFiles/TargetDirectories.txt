@@ -9,5 +9,8 @@ C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/glfw/CMakeFiles
 C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/glfw/src/CMakeFiles/glfw.dir
 C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/glfw/src/CMakeFiles/update_mappings.dir
 C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/glfw/src/CMakeFiles/INSTALL.dir
+C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/spdlog/CMakeFiles/spdlog.dir
+C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/spdlog/CMakeFiles/INSTALL.dir
+C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/spdlog/CMakeFiles/ALL_BUILD.dir
 C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineEditor/CMakeFiles/SoftEngineEditor.dir
 C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineEditor/CMakeFiles/INSTALL.dir

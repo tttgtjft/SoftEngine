@@ -185,6 +185,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{8F4D50EF-2182-3A2C-B20C-EC3BCA7FBF28}</Project>
       <Name>glfw</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\build\SoftEngineCore\spdlog\spdlog.vcxproj">
+      <Project>{EDF266C6-4362-341E-AAE0-0333333DF25E}</Project>
+      <Name>spdlog</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
