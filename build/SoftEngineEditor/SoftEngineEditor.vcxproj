@@ -115,7 +115,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\SoftEngineCore\Debug\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\Debug\glfw3.lib;..\SoftEngineCore\spdlog\Debug\spdlogd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\SoftEngineCore\Debug\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\Debug\glfw3.lib;..\SoftEngineCore\spdlog\Debug\spdlogd.lib;..\SoftEngineCore\glad\Debug\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -159,7 +159,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\SoftEngineCore\Release\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\Release\glfw3.lib;..\SoftEngineCore\spdlog\Release\spdlog.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\SoftEngineCore\Release\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\Release\glfw3.lib;..\SoftEngineCore\spdlog\Release\spdlog.lib;..\SoftEngineCore\glad\Release\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -203,7 +203,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\SoftEngineCore\MinSizeRel\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\MinSizeRel\glfw3.lib;..\SoftEngineCore\spdlog\MinSizeRel\spdlog.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\SoftEngineCore\MinSizeRel\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\MinSizeRel\glfw3.lib;..\SoftEngineCore\spdlog\MinSizeRel\spdlog.lib;..\SoftEngineCore\glad\MinSizeRel\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -246,7 +246,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\SoftEngineCore\RelWithDebInfo\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\RelWithDebInfo\glfw3.lib;..\SoftEngineCore\spdlog\RelWithDebInfo\spdlog.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\SoftEngineCore\RelWithDebInfo\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\RelWithDebInfo\glfw3.lib;..\SoftEngineCore\spdlog\RelWithDebInfo\spdlog.lib;..\SoftEngineCore\glad\RelWithDebInfo\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -329,6 +329,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\build\SoftEngineCore\SoftEngineCore.vcxproj">
       <Project>{B26D8039-576D-3B8D-B135-853C1B01366D}</Project>
       <Name>SoftEngineCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\build\SoftEngineCore\glad\glad.vcxproj">
+      <Project>{13F58E25-9375-3470-B63C-DD0F7BE5C318}</Project>
+      <Name>glad</Name>
     </ProjectReference>
     <ProjectReference Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\build\SoftEngineCore\glfw\src\glfw.vcxproj">
       <Project>{8F4D50EF-2182-3A2C-B20C-EC3BCA7FBF28}</Project>
