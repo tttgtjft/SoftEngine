@@ -15,6 +15,9 @@
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes\SoftEngineCore\Log.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes\SoftEngineCore\Event.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Window.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

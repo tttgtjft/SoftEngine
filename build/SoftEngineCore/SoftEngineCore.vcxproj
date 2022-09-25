@@ -271,6 +271,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes\SoftEngineCore\Application.hpp" />
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes\SoftEngineCore\Log.hpp" />
+    <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes\SoftEngineCore\Event.hpp" />
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Window.hpp" />
     <ClCompile Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Application.cpp" />
     <ClCompile Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Window.cpp" />
