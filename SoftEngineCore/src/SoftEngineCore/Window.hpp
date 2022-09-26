@@ -12,7 +12,7 @@ namespace SoftEngine {
 	class Window
 	{
 	public:
-		using EventCallbackFn = std::function<void(Event&)>;
+		using EventCallbackFn = std::function<void(BaseEvent&)>;
 
 		Window(std::string title, const unsigned int width, const unsigned int height);
 		~Window();

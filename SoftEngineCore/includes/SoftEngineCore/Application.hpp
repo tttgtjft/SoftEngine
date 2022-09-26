@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SoftEngineCore/Event.hpp>
+
 #include <memory>
 
 namespace SoftEngine {
@@ -20,6 +22,9 @@ namespace SoftEngine {
 		virtual void on_update() {}
 	private:
 		std::unique_ptr<class Window> m_pWindow;
+
+		EventDispatcher m_event_dispatcher;
+		bool m_bCloseWindow = false;
 	};
 
 }
