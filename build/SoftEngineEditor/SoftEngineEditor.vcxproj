@@ -115,7 +115,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\SoftEngineCore\Debug\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\Debug\glfw3.lib;..\SoftEngineCore\spdlog\Debug\spdlogd.lib;..\SoftEngineCore\glad\Debug\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\SoftEngineCore\Debug\SoftEngineCore.lib;..\SoftEngineCore\spdlog\Debug\spdlogd.lib;..\SoftEngineCore\Debug\ImGui.lib;..\SoftEngineCore\glfw\src\Debug\glfw3.lib;..\SoftEngineCore\glad\Debug\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -159,7 +159,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\SoftEngineCore\Release\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\Release\glfw3.lib;..\SoftEngineCore\spdlog\Release\spdlog.lib;..\SoftEngineCore\glad\Release\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\SoftEngineCore\Release\SoftEngineCore.lib;..\SoftEngineCore\spdlog\Release\spdlog.lib;..\SoftEngineCore\Release\ImGui.lib;..\SoftEngineCore\glfw\src\Release\glfw3.lib;..\SoftEngineCore\glad\Release\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -203,7 +203,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\SoftEngineCore\MinSizeRel\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\MinSizeRel\glfw3.lib;..\SoftEngineCore\spdlog\MinSizeRel\spdlog.lib;..\SoftEngineCore\glad\MinSizeRel\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\SoftEngineCore\MinSizeRel\SoftEngineCore.lib;..\SoftEngineCore\spdlog\MinSizeRel\spdlog.lib;..\SoftEngineCore\MinSizeRel\ImGui.lib;..\SoftEngineCore\glfw\src\MinSizeRel\glfw3.lib;..\SoftEngineCore\glad\MinSizeRel\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -246,7 +246,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\SoftEngineCore\RelWithDebInfo\SoftEngineCore.lib;..\SoftEngineCore\glfw\src\RelWithDebInfo\glfw3.lib;..\SoftEngineCore\spdlog\RelWithDebInfo\spdlog.lib;..\SoftEngineCore\glad\RelWithDebInfo\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\SoftEngineCore\RelWithDebInfo\SoftEngineCore.lib;..\SoftEngineCore\spdlog\RelWithDebInfo\spdlog.lib;..\SoftEngineCore\RelWithDebInfo\ImGui.lib;..\SoftEngineCore\glfw\src\RelWithDebInfo\glfw3.lib;..\SoftEngineCore\glad\RelWithDebInfo\glad.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -325,6 +325,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\build\SoftEngineCore\ImGui.vcxproj">
+      <Project>{DA81AC8D-88B6-3AC7-B56C-E92DD0665925}</Project>
+      <Name>ImGui</Name>
     </ProjectReference>
     <ProjectReference Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\build\SoftEngineCore\SoftEngineCore.vcxproj">
       <Project>{B26D8039-576D-3B8D-B135-853C1B01366D}</Project>

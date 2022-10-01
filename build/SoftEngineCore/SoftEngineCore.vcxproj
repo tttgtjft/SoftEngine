@@ -78,7 +78,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -96,10 +96,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;SPDLOG_COMPILED_LIB;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -112,7 +112,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -130,10 +130,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SPDLOG_COMPILED_LIB;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -146,7 +146,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -164,10 +164,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SPDLOG_COMPILED_LIB;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -180,7 +180,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -197,10 +197,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SPDLOG_COMPILED_LIB;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glfw\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\spdlog\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\external\glad\include;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external;C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\..\external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -282,6 +282,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\build\SoftEngineCore\ImGui.vcxproj">
+      <Project>{DA81AC8D-88B6-3AC7-B56C-E92DD0665925}</Project>
+      <Name>ImGui</Name>
     </ProjectReference>
     <ProjectReference Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\build\SoftEngineCore\glad\glad.vcxproj">
       <Project>{13F58E25-9375-3470-B63C-DD0F7BE5C318}</Project>

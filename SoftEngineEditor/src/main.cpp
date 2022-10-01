@@ -1,7 +1,7 @@
 #include <iostream>
 #include <memory>
 
-#include <SoftEngineCore/Application.hpp>
+#include "SoftEngineCore/Application.hpp"
 
 class MyApp : public SoftEngine::Application 
 {

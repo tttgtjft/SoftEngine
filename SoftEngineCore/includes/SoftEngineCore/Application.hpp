@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SoftEngineCore/Event.hpp>
+#include "SoftEngineCore/Event.hpp"
 
 #include <memory>
 

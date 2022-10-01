@@ -1,7 +1,7 @@
 #pragma once
 
-#include<array>
-#include<functional>
+#include <array>
+#include <functional>
 
 namespace SoftEngine {
 
