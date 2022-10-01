@@ -45,6 +45,7 @@ namespace SoftEngine {
 		
 		GLFWwindow* m_pWindow = nullptr;
 		WindowData m_data;
+		float m_background_color[4] = { 0.f, 0.f, 0.f, 1.f };	
 	};
 
 }
