@@ -2,35 +2,53 @@
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Application.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src\SoftEngineCore</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Window.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src\SoftEngineCore</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Rendering\OpenGL\ShaderProgram.cpp">
+      <Filter>src\SoftEngineCore\Rendering\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes\SoftEngineCore\Application.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>includes\SoftEngineCore</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes\SoftEngineCore\Log.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>includes\SoftEngineCore</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes\SoftEngineCore\Event.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>includes\SoftEngineCore</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Window.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>src\SoftEngineCore</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Rendering\OpenGL\ShaderProgram.hpp">
+      <Filter>src\SoftEngineCore\Rendering\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{4BA5F150-7E85-3C04-8F5C-BE808A7DDEF3}</UniqueIdentifier>
+    <Filter Include="includes">
+      <UniqueIdentifier>{0809E08A-999B-3B21-995D-CD1C98B09E64}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{10704258-E9CC-33AD-8091-F6ED4070C0A8}</UniqueIdentifier>
+    <Filter Include="includes\SoftEngineCore">
+      <UniqueIdentifier>{FF9579BA-90B5-33BD-998C-FF86E5E5F9CA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{747FC8E1-B49B-3161-BFEF-DFA25F726FB4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SoftEngineCore">
+      <UniqueIdentifier>{F456D31E-F4D9-363F-8399-38B28D4C6600}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SoftEngineCore\Rendering">
+      <UniqueIdentifier>{242FE858-ADAA-3F24-BBD8-88A0181D831A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SoftEngineCore\Rendering\OpenGL">
+      <UniqueIdentifier>{14D7D17B-EE34-3A5C-B5C0-710BE61755E2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

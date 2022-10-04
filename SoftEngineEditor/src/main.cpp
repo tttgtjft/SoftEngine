@@ -16,7 +16,7 @@ class MyApp : public SoftEngine::Application
 int main() {
 	auto myApp = std::make_unique<MyApp>();
 
-	int returnCode = myApp->start(1024, 768, "My first App");
+	int returnCode = myApp->start(1024, 768, "Soft Engine");
 
 	return returnCode;
 }
