@@ -10,6 +10,9 @@
     <ClCompile Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Rendering\OpenGL\ShaderProgram.cpp">
       <Filter>src\SoftEngineCore\Rendering\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Rendering\OpenGL\VertexBuffer.cpp">
+      <Filter>src\SoftEngineCore\Rendering\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\includes\SoftEngineCore\Application.hpp">
@@ -25,6 +28,9 @@
       <Filter>src\SoftEngineCore</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Rendering\OpenGL\ShaderProgram.hpp">
+      <Filter>src\SoftEngineCore\Rendering\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\SoftEngineCore\src\SoftEngineCore\Rendering\OpenGL\VertexBuffer.hpp">
       <Filter>src\SoftEngineCore\Rendering\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
