@@ -1,4 +1,5 @@
 #include "SoftEngineCore/Application.hpp"
+
 #include "SoftEngineCore/Log.hpp"
 #include "SoftEngineCore/Window.hpp"
 #include "SoftEngineCore/Event.hpp"
