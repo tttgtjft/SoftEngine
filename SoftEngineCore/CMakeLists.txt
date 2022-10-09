@@ -13,6 +13,7 @@ set(ENGINE_PRIVATE_INCLUDES
 	src/SoftEngineCore/Rendering/OpenGL/ShaderProgram.hpp
 	src/SoftEngineCore/Rendering/OpenGL/VertexBuffer.hpp
 	src/SoftEngineCore/Rendering/OpenGL/VertexArray.hpp
+	src/SoftEngineCore/Rendering/OpenGL/IndexBuffer.hpp
 )
 
 set(ENGINE_PRIVATE_SOURCES
@@ -21,6 +22,7 @@ set(ENGINE_PRIVATE_SOURCES
 	src/SoftEngineCore/Rendering/OpenGL/ShaderProgram.cpp
 	src/SoftEngineCore/Rendering/OpenGL/VertexBuffer.cpp
 	src/SoftEngineCore/Rendering/OpenGL/VertexArray.cpp
+	src/SoftEngineCore/Rendering/OpenGL/IndexBuffer.cpp
 )
 
 set(ENGINE_ALL_SOURCES
