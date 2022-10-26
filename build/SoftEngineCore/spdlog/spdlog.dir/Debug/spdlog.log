@@ -1,6 +1,6 @@
 ﻿  Building Custom Rule C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/external/spdlog/CMakeLists.txt
-  stdout_sinks.cpp
   spdlog.cpp
+  stdout_sinks.cpp
   color_sinks.cpp
   file_sinks.cpp
   async.cpp

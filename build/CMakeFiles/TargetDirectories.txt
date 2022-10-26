@@ -16,5 +16,8 @@ C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/spdlog/CMakeFil
 C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/glad/CMakeFiles/glad.dir
 C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/glad/CMakeFiles/INSTALL.dir
 C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/glad/CMakeFiles/ALL_BUILD.dir
+C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/glm/CMakeFiles/INSTALL.dir
+C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/glm/CMakeFiles/ALL_BUILD.dir
+C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineCore/glm/glm/CMakeFiles/INSTALL.dir
 C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineEditor/CMakeFiles/SoftEngineEditor.dir
 C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build/SoftEngineEditor/CMakeFiles/INSTALL.dir

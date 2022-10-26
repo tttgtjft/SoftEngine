@@ -20,6 +20,7 @@
   -- Including Win32 support
   -- Build spdlog: 1.10.0
   -- Build type: Release
+  -- GLM: Version 0.9.9.9
   -- Configuring done
   -- Generating done
   -- Build files have been written to: C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/build
