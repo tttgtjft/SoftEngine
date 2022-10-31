@@ -1,9 +1,0 @@
-﻿  Building Custom Rule C:/Users/ASUS TUF GAMING/Desktop/SoftEngine/external/spdlog/CMakeLists.txt
-  spdlog.cpp
-  stdout_sinks.cpp
-  color_sinks.cpp
-  file_sinks.cpp
-  async.cpp
-  cfg.cpp
-  fmt.cpp
-  spdlog.vcxproj -> C:\Users\ASUS TUF GAMING\Desktop\SoftEngine\build\SoftEngineCore\spdlog\Debug\spdlogd.lib
