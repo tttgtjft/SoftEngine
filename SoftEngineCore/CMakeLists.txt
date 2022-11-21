@@ -6,6 +6,7 @@ set(ENGINE_PUBLIC_INCLUDES
 	includes/SoftEngineCore/Application.hpp
 	includes/SoftEngineCore/Log.hpp
 	includes/SoftEngineCore/Event.hpp
+	includes/SoftEngineCore/Camera.hpp
 )
 
 set(ENGINE_PRIVATE_INCLUDES
@@ -23,6 +24,7 @@ set(ENGINE_PRIVATE_SOURCES
 	src/SoftEngineCore/Rendering/OpenGL/VertexBuffer.cpp
 	src/SoftEngineCore/Rendering/OpenGL/VertexArray.cpp
 	src/SoftEngineCore/Rendering/OpenGL/IndexBuffer.cpp
+	src/SoftEngineCore/Camera.cpp
 )
 
 set(ENGINE_ALL_SOURCES
