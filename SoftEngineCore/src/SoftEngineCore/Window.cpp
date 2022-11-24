@@ -6,7 +6,8 @@
 #include "SoftEngineCore/Rendering/OpenGL/VertexArray.hpp"
 #include "SoftEngineCore/Camera.hpp"
 
-#include <glad/glad.h>
+#include "SoftEngineCore/Rendering/OpenGL/Renderer_OpenGL.hpp"
+
 #include <GLFW/glfw3.h>
 
 #include <imgui/imgui.h>
@@ -19,8 +20,6 @@
 
 namespace SoftEngine {
 
-	static bool b_GLFW_initializated = false;
-  
     GLfloat positions_colors[] = {
         -0.5f, -0.5f, 0.0f,       0.0f, 0.0f, 1.0f,
         0.5f, -0.5f, 0.0f,      1.0f, 0.0f, 0.0f,   
@@ -87,33 +86,31 @@ namespace SoftEngine {
 	{
         LOG_INFO("Creating window {0} width size {1}x{2}", m_data.title, m_data.width, m_data.height);
 
-        if (!b_GLFW_initializated)
-        {
-            if (!glfwInit())
+        glfwSetErrorCallback([](int error_code, const char* description)
             {
-                LOG_CRITICAL("Failed to initialize GLFW");
-                return -1;
-            }
-            b_GLFW_initializated = true;
+                LOG_CRITICAL("GLFW error: {0}", description);
+            });
+
+        if (!glfwInit())
+        {
+            LOG_CRITICAL("Failed to initialize GLFW");
+            return -1;
         }
 
         m_pWindow = glfwCreateWindow(m_data.width, m_data.height, m_data.title.c_str(), nullptr, nullptr);
         if (!m_pWindow)
         {
             LOG_CRITICAL("Failed to create window {0} width size {1}x{2}", m_data.title, m_data.width, m_data.height);
-            glfwTerminate();
             return -2;
         }
 
-        glfwMakeContextCurrent(m_pWindow);
-
-        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+        if (!Renderer_OpenGl::init(m_pWindow))
         {
-            LOG_CRITICAL("Failed to initialize GLAD");
+            LOG_CRITICAL("Failed to initialize OpenGL renderer");
             return -3;
         }
 
-        glfwSetWindowUserPointer(m_pWindow, &m_data);
+        glfwSetWindowUserPointer(m_pWindow, &m_data); 
 
         glfwSetWindowSizeCallback(m_pWindow,
             [](GLFWwindow* pWindow, int width, int height)
@@ -121,7 +118,6 @@ namespace SoftEngine {
                 WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(pWindow));
                 data.width = width;
                 data.height = height;
-
                 EventWindowResize event(width, height);
                 data.eventCallbackFn(event);
             }
@@ -131,7 +127,6 @@ namespace SoftEngine {
             [](GLFWwindow* pWindow, double x, double y)
             {
                 WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(pWindow));
-
                 EventMouseMoved event(x, y);
                 data.eventCallbackFn(event);
             }
@@ -141,7 +136,6 @@ namespace SoftEngine {
             [](GLFWwindow* pWindow)
             {
                 WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(pWindow));
-
                 EventWindowClose event;
                 data.eventCallbackFn(event);
             }
@@ -150,7 +144,7 @@ namespace SoftEngine {
         glfwSetFramebufferSizeCallback(m_pWindow,
             [](GLFWwindow* pWindow, int width, int height)
             {
-                glViewport(0, 0, width, height);
+                Renderer_OpenGl::set_viewport(width, height);
             }
         );
         
@@ -162,8 +156,8 @@ namespace SoftEngine {
 
         BufferLayout buffer_layout_2vec3
         {
-                    ShaderDataType::Float3,
-                    ShaderDataType::Float3
+            ShaderDataType::Float3,
+            ShaderDataType::Float3
         };
 
         p_positions_colors_vbo = std::make_unique<VertexBuffer>(positions_colors, sizeof(positions_colors), buffer_layout_2vec3);
@@ -172,38 +166,25 @@ namespace SoftEngine {
 
         p_vao->add_vertex_buffer(*p_positions_colors_vbo);
         p_vao->set_index_buffer(*p_index_buffer);
-
-        glm::mat3 mat_1(4, 0, 0, 2, 8, 1, 0, 1, 0);
-        glm::mat3 mat_2(4, 2, 9, 2, 0, 4, 1, 4, 2);
-
-        glm::mat3 result_mat = mat_1 * mat_2;
-
-        LOG_INFO("");
-        LOG_INFO("|{0:3} {1:3} {2:3}|", result_mat[0][0], result_mat[1][0], result_mat[2][0]);
-        LOG_INFO("|{0:3} {1:3} {2:3}|", result_mat[0][1], result_mat[1][1], result_mat[2][1]);
-        LOG_INFO("|{0:3} {1:3} {2:3}|", result_mat[0][2], result_mat[1][2], result_mat[2][2]);
-        LOG_INFO("");
-
-        glm::vec4 vec(1, 2, 3, 4);
-        glm::mat4 mat_identity(1);
-
-        glm::vec4 result_vec = mat_identity * vec;
-
-        LOG_INFO("({0}, {1}, {2}, {3})", result_vec[0], result_vec[1], result_vec[2], result_vec[3]);
         
         return 0;
 	}
 
     void Window::shutdown()
     {
+        if (ImGui::GetCurrentContext())
+        {
+            ImGui::DestroyContext();
+        }
+
         glfwDestroyWindow(m_pWindow);
         glfwTerminate();
     }
 
 	void Window::on_update()
 	{
-        glClearColor(m_background_color[0], m_background_color[1], m_background_color[2], m_background_color[3]);
-        glClear(GL_COLOR_BUFFER_BIT);
+        Renderer_OpenGl::set_clear_color(m_background_color[0], m_background_color[1], m_background_color[2], m_background_color[3]);
+        Renderer_OpenGl::clear();
 
         p_shader_program->bind();
 
@@ -230,8 +211,7 @@ namespace SoftEngine {
         camera.set_projection_mode(b_perspective_camera ? Camera::ProjectionMode::Perspective : Camera::ProjectionMode::Orthographic);
         p_shader_program->setMatrix4("view_projection_matrix", camera.get_projection_matrix() * camera.get_view_matrix());
 
-        p_vao->bind();
-        glDrawElements(GL_TRIANGLES, p_vao->get_indices_count(), GL_UNSIGNED_INT, nullptr);
+        Renderer_OpenGl::draw(*p_vao);
 
         ImGuiIO& io = ImGui::GetIO();
         io.DisplaySize.x = static_cast<float>(get_width());
@@ -242,7 +222,7 @@ namespace SoftEngine {
         ImGui::NewFrame();
 
         ImGui::ShowDemoWindow();
-
+            
         ImGui::Begin("Background Color Window");
         ImGui::ColorEdit4("Background Color", m_background_color);
         ImGui::SliderFloat3("scale", scale, 0.f, 2.f);
