@@ -16,6 +16,7 @@ set(ENGINE_PRIVATE_INCLUDES
 	src/SoftEngineCore/Rendering/OpenGL/VertexArray.hpp
 	src/SoftEngineCore/Rendering/OpenGL/IndexBuffer.hpp
 	src/SoftEngineCore/Rendering/OpenGL/Renderer_OpenGl.hpp
+	src/SoftEngineCore/Modules/UIModule.hpp
 )
 
 set(ENGINE_PRIVATE_SOURCES
@@ -27,6 +28,7 @@ set(ENGINE_PRIVATE_SOURCES
 	src/SoftEngineCore/Rendering/OpenGL/IndexBuffer.cpp
 	src/SoftEngineCore/Camera.cpp
 	src/SoftEngineCore/Rendering/OpenGL/Renderer_OpenGl.cpp
+	src/SoftEngineCore/Modules/UIModule.cpp
 )
 
 set(ENGINE_ALL_SOURCES

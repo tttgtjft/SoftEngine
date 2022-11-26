@@ -5,6 +5,7 @@
 #include "SoftEngineCore/Rendering/OpenGL/VertexBuffer.hpp"
 #include "SoftEngineCore/Rendering/OpenGL/VertexArray.hpp"
 #include "SoftEngineCore/Camera.hpp"
+#include "SoftEngineCore/Modules/UIModule.hpp"
 
 #include "SoftEngineCore/Rendering/OpenGL/Renderer_OpenGL.hpp"
 
@@ -70,11 +71,6 @@ namespace SoftEngine {
 		: m_data({std::move(title), width, height})
 	{
 		int resultCode = init();
-
-        IMGUI_CHECKVERSION();
-        ImGui::CreateContext();
-        ImGui_ImplOpenGL3_Init();
-        ImGui_ImplGlfw_InitForOpenGL(m_pWindow, true);
 	}
 
 	Window::~Window()
@@ -147,6 +143,8 @@ namespace SoftEngine {
                 Renderer_OpenGl::set_viewport(width, height);
             }
         );
+
+        UIModule::on_window_create(m_pWindow);
         
         p_shader_program = std::make_unique<ShaderProgram>(vertex_shader, fragment_shader);
         if (!p_shader_program->isCompiled())
@@ -172,11 +170,7 @@ namespace SoftEngine {
 
     void Window::shutdown()
     {
-        if (ImGui::GetCurrentContext())
-        {
-            ImGui::DestroyContext();
-        }
-
+        UIModule::on_window_close();
         glfwDestroyWindow(m_pWindow);
         glfwTerminate();
     }
@@ -213,16 +207,12 @@ namespace SoftEngine {
 
         Renderer_OpenGl::draw(*p_vao);
 
-        ImGuiIO& io = ImGui::GetIO();
-        io.DisplaySize.x = static_cast<float>(get_width());
-        io.DisplaySize.y = static_cast<float>(get_height());
+        UIModule::on_ui_draw_begin();
 
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplGlfw_NewFrame();
-        ImGui::NewFrame();
-
+        bool show;
+        UIModule::ShowExampleAppDockSpace(&show);
         ImGui::ShowDemoWindow();
-            
+
         ImGui::Begin("Background Color Window");
         ImGui::ColorEdit4("Background Color", m_background_color);
         ImGui::SliderFloat3("scale", scale, 0.f, 2.f);
@@ -234,8 +224,7 @@ namespace SoftEngine {
         ImGui::Checkbox("pespective camera", &b_perspective_camera);
         ImGui::End();
 
-        ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        UIModule::on_ui_draw_end();
 
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();
