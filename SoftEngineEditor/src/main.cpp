@@ -1,22 +1,34 @@
+#include "SoftEngineCore/Application.hpp"
+
+#include <imgui/imgui.h>
+
 #include <iostream>
 #include <memory>
 
-#include "SoftEngineCore/Application.hpp"
 
-class MyApp : public SoftEngine::Application 
+class SoftEngineEditor : public SoftEngine::Application 
 {
-	void on_update() override 
+	virtual void on_update() override 
 	{
 		//std::cout << "Update frame: " << frame++ << std::endl;
+	}
+
+	virtual void on_ui_draw() override
+	{
+		ImGui::Begin("Editor");
+		ImGui::SliderFloat3("camera position", camera_position, -10.f, 10.f);
+		ImGui::SliderFloat3("camera rotation", camera_rotation, 0.f, 360.f);
+		ImGui::Checkbox("pespective camera", &b_perspective_camera);
+		ImGui::End();
 	}
 
 	int frame = 0;
 };
 
 int main() {
-	auto myApp = std::make_unique<MyApp>();
+	auto pSoftEngineEditor = std::make_unique<SoftEngineEditor>();
 
-	int returnCode = myApp->start(1024, 768, "Soft Engine");
+	int returnCode = pSoftEngineEditor->start(1024, 768, "SoftEngine Editor");
 
 	return returnCode;
 }
