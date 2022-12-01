@@ -7,6 +7,8 @@ set(ENGINE_PUBLIC_INCLUDES
 	includes/SoftEngineCore/Log.hpp
 	includes/SoftEngineCore/Event.hpp
 	includes/SoftEngineCore/Camera.hpp
+	includes/SoftEngineCore/Keys.hpp
+	includes/SoftEngineCore/Input.hpp
 )
 
 set(ENGINE_PRIVATE_INCLUDES
@@ -29,6 +31,7 @@ set(ENGINE_PRIVATE_SOURCES
 	src/SoftEngineCore/Camera.cpp
 	src/SoftEngineCore/Rendering/OpenGL/Renderer_OpenGl.cpp
 	src/SoftEngineCore/Modules/UIModule.cpp
+	src/SoftEngineCore/Input.cpp
 )
 
 set(ENGINE_ALL_SOURCES

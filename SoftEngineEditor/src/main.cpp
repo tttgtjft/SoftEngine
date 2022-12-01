@@ -1,5 +1,6 @@
 #include "SoftEngineCore/Application.hpp"
 
+#include "SoftEngineCore/Input.hpp"
 #include <imgui/imgui.h>
 
 #include <iostream>
@@ -10,7 +11,46 @@ class SoftEngineEditor : public SoftEngine::Application
 {
 	virtual void on_update() override 
 	{
-		//std::cout << "Update frame: " << frame++ << std::endl;
+		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_W))
+		{
+			camera_position[2] -= 0.01f;
+		}
+		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_S))
+		{
+			camera_position[2] += 0.01f;
+		}
+		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_A))
+		{
+			camera_position[0] -= 0.01f;
+		}
+		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_D))
+		{
+			camera_position[0] += 0.01f;
+		}
+		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_Q))
+		{
+			camera_position[1] += 0.01f;
+		}
+		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_E))
+		{
+			camera_position[1] -= 0.01f;
+		}
+		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_UP))
+		{
+			camera_rotation[0] += 0.5f;
+		}
+		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_DOWN))
+		{
+			camera_rotation[0] -= 0.5f;
+		}
+		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_RIGHT))
+		{
+			camera_rotation[1] += 0.5f;
+		}
+		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_LEFT))
+		{
+			camera_rotation[1] -= 0.5f;
+		}
 	}
 
 	virtual void on_ui_draw() override
@@ -22,7 +62,6 @@ class SoftEngineEditor : public SoftEngine::Application
 		ImGui::End();
 	}
 
-	int frame = 0;
 };
 
 int main() {

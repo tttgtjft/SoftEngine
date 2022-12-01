@@ -25,7 +25,7 @@ namespace SoftEngine {
 
 		float camera_position[3] = { 0.0f, 0.0f, 1.0f };
 		float camera_rotation[3] = { 0.0f, 0.0f, 0.0f };
-		bool b_perspective_camera = false;
+		bool b_perspective_camera = true;
 		Camera camera;
 
 	private:

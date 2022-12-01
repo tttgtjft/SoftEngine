@@ -36,9 +36,9 @@ namespace SoftEngine {
 								0, 0, 0, 1);
 
 		glm::mat4 translate_matrix(1, 0, 0, 0,
-			0, 1, 0, 0,
-			0, 0, 1, 0,	
-			-m_position[0], -m_position[1], -m_position[2], 1);
+								0, 1, 0, 0,
+								0, 0, 1, 0,	
+								-m_position[0], -m_position[1], -m_position[2], 1);
 
 		m_view_matrix = rotate_matrix_y * rotate_matrix_x * translate_matrix;
 	}
@@ -51,10 +51,10 @@ namespace SoftEngine {
 			float t = 0.1f;
 			float f = 10;
 			float n = 0.1f;
-			m_projection_matrix = glm::mat4(n / r, 0, 0, 0,
-											0, n / t, 0, 0,
-											0, 0, (-f - n) / (f - n), -1,
-											0, 0, -2 * f * n / (f - n), 0);
+			 m_projection_matrix = glm::mat4(n / r, 0, 0, 0,
+                                            0, n / t, 0, 0,
+                                            0, 0, (-f - n) / (f - n), -1,
+                                            0, 0, -2 * f * n / (f - n), 0);
 		}
 		else
 		{

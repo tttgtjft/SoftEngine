@@ -4,6 +4,7 @@
 #include "SoftEngineCore/Window.hpp"
 #include "SoftEngineCore/Event.hpp"
 #include "SoftEngineCore/Modules/UIModule.hpp"
+#include "SoftEngineCore/Input.hpp"
 
 #include "SoftEngineCore/Rendering/OpenGL/ShaderProgram.hpp"
 #include "SoftEngineCore/Rendering/OpenGL/VertexBuffer.hpp"
@@ -96,6 +97,29 @@ namespace SoftEngine {
 			{
 				LOG_INFO("[WindowClose]");
 				m_bCloseWindow = true;
+			}
+		);
+
+		m_event_dispatcher.add_event_listener<EventKeyPressed>(
+			[&](EventKeyPressed& event)
+			{
+				if (event.repeated)
+				{
+					LOG_INFO("[Key pressed: {0}, repeated]", static_cast<char>(event.key_code));
+				}
+				else
+				{
+					LOG_INFO("[Key pressed: {0}]", static_cast<char>(event.key_code));
+				}
+				Input::press_key(event.key_code);
+			}
+		);
+
+		m_event_dispatcher.add_event_listener<EventKeyReleased>(
+			[&](EventKeyReleased& event)	
+			{
+				LOG_INFO("[Key released: {0}]", static_cast<char>(event.key_code));
+				Input::release_key(event.key_code);
 			}
 		);
 
