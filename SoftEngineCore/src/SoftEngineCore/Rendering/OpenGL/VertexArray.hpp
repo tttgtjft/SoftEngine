@@ -20,7 +20,7 @@ namespace SoftEngine {
 		void set_index_buffer(const IndexBuffer& index_buffer);
 		void bind() const;
 		static void unbind();
-		size_t get_indices_count() const { return m_count; }
+		const size_t get_indices_count() const { return m_count; }
 
 	private:
 		unsigned int m_id = 0;

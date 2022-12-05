@@ -26,7 +26,7 @@ namespace SoftEngine {
 		float camera_position[3] = { 0.0f, 0.0f, 1.0f };
 		float camera_rotation[3] = { 0.0f, 0.0f, 0.0f };
 		bool b_perspective_camera = true;
-		Camera camera;
+		Camera camera{glm::vec3(-5.f, 0.f, 0.f)};
 
 	private:
 		std::unique_ptr<class Window> m_pWindow;
