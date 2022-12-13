@@ -143,4 +143,46 @@ namespace SoftEngine {
 		static const EventType type = EventType::KeyReleased;
 	};
 
+	struct EventMouseButtonPressed : public BaseEvent
+	{
+		EventMouseButtonPressed(const MouseButton mouse_buttom, const double x_pos, const double y_pos)
+			: mouse_buttom(mouse_buttom)
+			, x_pos(x_pos)
+			, y_pos(y_pos)
+		{
+		}
+
+		EventType get_type() const override
+		{
+			return type;
+		}
+
+		MouseButton mouse_buttom;
+		const double x_pos;
+		const double y_pos;
+
+		static const EventType type = EventType::MouseButtonPressed;
+	};
+
+	struct EventMouseButtonReleased : public BaseEvent
+	{
+		EventMouseButtonReleased(const MouseButton mouse_buttom, const double x_pos, const double y_pos)
+			: mouse_buttom(mouse_buttom)
+			, x_pos(x_pos)
+			, y_pos(y_pos)
+		{
+		}
+
+		EventType get_type() const override
+		{
+			return type;
+		}
+
+		MouseButton mouse_buttom;
+		const double x_pos;
+		const double y_pos;
+
+		static const EventType type = EventType::MouseButtonReleased;
+	};
+
 }

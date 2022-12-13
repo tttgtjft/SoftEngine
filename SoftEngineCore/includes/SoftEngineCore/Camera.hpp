@@ -23,11 +23,11 @@ namespace SoftEngine {
 		void set_position_rotation(const glm::vec3& position, const glm::vec3& rotation);
 		void set_projection_mode(const ProjectionMode projection_mode);
 
-		const glm::vec3 get_camera_position() const { return m_position; }
-		const glm::vec3 get_camera_rotation() const { return m_rotation; }
+		const glm::vec3& get_camera_position() const { return m_position; }
+		const glm::vec3& get_camera_rotation() const { return m_rotation; }
 		
-		glm::mat4 get_view_matrix() const { return m_view_matrix; }
-		glm::mat4 get_projection_matrix() const { return m_projection_matrix; }
+		const glm::mat4& get_view_matrix();
+		const glm::mat4& get_projection_matrix() const { return m_projection_matrix; }
 
 		void move_forward(const float delta);
 		void move_right(const float delta);
@@ -54,6 +54,7 @@ namespace SoftEngine {
 		glm::vec3 m_up;
 
 		ProjectionMode m_projection_mode;
+		bool m_update_view_matrix = false;
 	};
 
 }

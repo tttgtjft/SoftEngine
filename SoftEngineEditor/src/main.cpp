@@ -9,6 +9,9 @@
 
 class SoftEngineEditor : public SoftEngine::Application 
 {
+	double m_initial_mouse_pos_x = 0.0;
+	double m_initial_mouse_pos_y = 0.0;
+
 	virtual void on_update() override 
 	{
 		glm::vec3 movement_delta = { 0.0f, 0.0f, 0.0f };
@@ -62,7 +65,33 @@ class SoftEngineEditor : public SoftEngine::Application
 			rotation_delta.x += 0.5f;
 		}
 
+		if (SoftEngine::Input::is_mouse_button_pressed(SoftEngine::MouseButton::MOUSE_BUTTON_RIGHT))
+		{
+			glm::vec2 current_cursor_position = get_current_cursor_position();
+			if (SoftEngine::Input::is_mouse_button_pressed(SoftEngine::MouseButton::MOUSE_BUTTON_LEFT))
+			{
+				camera.move_right(static_cast<float>(-(m_initial_mouse_pos_x - current_cursor_position.x)) / 100.f);
+				camera.move_up(static_cast<float>((m_initial_mouse_pos_y - current_cursor_position.y)) / 100.f);
+			}
+			else
+			{
+				rotation_delta.z += static_cast<float>(m_initial_mouse_pos_x - current_cursor_position.x) / 5.f;
+				rotation_delta.y -= static_cast<float>(m_initial_mouse_pos_y - current_cursor_position.y) / 5.f;
+			}
+			m_initial_mouse_pos_x = current_cursor_position.x;
+			m_initial_mouse_pos_y = current_cursor_position.y;
+		}
+
 		camera.add_movement_rotation(movement_delta, rotation_delta);
+	}
+
+	virtual void on_mouse_button_event(const SoftEngine::MouseButton button_code, 
+									   const double x_pos,
+									   const double y_pos, 
+									   const bool pressed) override
+	{
+		m_initial_mouse_pos_x = x_pos;
+		m_initial_mouse_pos_y = y_pos;
 	}
 
 	virtual void on_ui_draw() override
