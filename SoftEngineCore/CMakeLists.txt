@@ -64,6 +64,9 @@ target_link_libraries(${ENGINE_PROJECT_NAME} PRIVATE glad)
 add_subdirectory(../external/glm ${CMAKE_CURRENT_BINARY_DIR}/glm)
 target_link_libraries(${ENGINE_PROJECT_NAME} PRIVATE glm)
 
+add_subdirectory(../external/stb ${CMAKE_CURRENT_BINARY_DIR}/stb)
+target_link_libraries(${ENGINE_PROJECT_NAME} PRIVATE stb)
+
 set(IMGUI_INCLUDES
 	../external/imgui/imgui.h
 	../external/imgui/backends/imgui_impl_glfw.h
@@ -91,3 +94,4 @@ target_include_directories(ImGui PUBLIC ../external/imgui)
 target_link_libraries(ImGui PRIVATE glad glfw)
 
 target_link_libraries(${ENGINE_PROJECT_NAME} PRIVATE ImGui)
+

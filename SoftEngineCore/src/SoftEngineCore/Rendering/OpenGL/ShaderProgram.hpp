@@ -18,8 +18,9 @@ namespace SoftEngine {
 
 		void bind() const;
 		static void unbind();
-		bool isCompiled() const { return m_isCompiled; }
-		void setMatrix4(const char* name, const glm::mat4& matrix) const;
+		bool is_compiled() const { return m_isCompiled; }
+		void set_matrix4(const char* name, const glm::mat4& matrix) const;
+		void set_int(const char* name, const int value) const;
 
 	private:
 		bool m_isCompiled = false;
