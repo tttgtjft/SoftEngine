@@ -11,8 +11,8 @@
 #include "SoftEngineCore/Rendering/OpenGL/VertexArray.hpp"
 #include "SoftEngineCore/Rendering/OpenGL/Renderer_OpenGL.hpp"
 #include "SoftEngineCore/Camera.hpp"
+#include "SoftEngineCore/Rendering/OpenGL/Texture2D.hpp"
 
-#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <imgui/imgui.h>
 #include <glm/mat3x3.hpp>
@@ -78,6 +78,8 @@ namespace SoftEngine {
 	std::unique_ptr<VertexBuffer> p_positions_colors_vbo;
 	std::unique_ptr<IndexBuffer> p_index_buffer;
 	std::unique_ptr<VertexArray> p_vao;
+	std::unique_ptr<Texture2D> p_texture_background;
+	std::unique_ptr<Texture2D> p_texture_github;
 
 	float scale[3] = { 1.f, 1.f, 1.f };
 	float rotate = 0.f;
@@ -171,36 +173,15 @@ namespace SoftEngine {
 		int width;
 		int height;
 		int channels;
+
 		unsigned char* data = stbi_load("../../../container.jpg", &width, &height, &channels, 0);
+		p_texture_background = std::make_unique<Texture2D>(data, width, height);
+		p_texture_background->bind(0);
 
-		GLsizei mip_levels = static_cast<GLsizei>(log2(std::max(width, height))) + 1;
-		GLuint textureHandle_Background;
-		glCreateTextures(GL_TEXTURE_2D, 1, &textureHandle_Background);
-		glTextureStorage2D(textureHandle_Background, mip_levels, GL_RGB8, width, height);
-		glTextureSubImage2D(textureHandle_Background, 0, 0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
+		data = stbi_load("../../../github.jpg", &width, &height, &channels, 0);
+		p_texture_github = std::make_unique<Texture2D>(data, width, height);
+		p_texture_github->bind(1);
 
-		glTextureParameteri(textureHandle_Background, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		glTextureParameteri(textureHandle_Background, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTextureParameteri(textureHandle_Background, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTextureParameteri(textureHandle_Background, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glGenerateTextureMipmap(textureHandle_Background);
-		glBindTextureUnit(0, textureHandle_Background);
-		
-		data = stbi_load("../../../pubg.jpg", &width, &height, &channels, 0);
-	
-		mip_levels = static_cast<GLsizei>(log2(std::max(width, height))) + 1;
-		GLuint textureHandle_Github;
-		glCreateTextures(GL_TEXTURE_2D, 1, &textureHandle_Github);
-		glTextureStorage2D(textureHandle_Github, mip_levels, GL_RGB8, width, height);
-		glTextureSubImage2D(textureHandle_Github, 0, 0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
-
-		glTextureParameteri(textureHandle_Github, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		glTextureParameteri(textureHandle_Github, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTextureParameteri(textureHandle_Github, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTextureParameteri(textureHandle_Github, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glGenerateTextureMipmap(textureHandle_Github);
-		glBindTextureUnit(1, textureHandle_Github);
-	
 		delete[] data;
 
 		//-------------------------------------------------//
@@ -280,8 +261,8 @@ namespace SoftEngine {
 			m_pWindow->on_update();
 			on_update();
 		}
-		glDeleteTextures(1, &textureHandle_Background);
-		glDeleteTextures(1, &textureHandle_Github);
+		p_texture_background->~Texture2D();
+		p_texture_github->~Texture2D();
 
 		m_pWindow = nullptr;
 

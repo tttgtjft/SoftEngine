@@ -19,6 +19,7 @@ set(ENGINE_PRIVATE_INCLUDES
 	src/SoftEngineCore/Rendering/OpenGL/IndexBuffer.hpp
 	src/SoftEngineCore/Rendering/OpenGL/Renderer_OpenGl.hpp
 	src/SoftEngineCore/Modules/UIModule.hpp
+	src/SoftEngineCore/Rendering/OpenGL/Texture2D.hpp
 )
 
 set(ENGINE_PRIVATE_SOURCES
@@ -32,6 +33,7 @@ set(ENGINE_PRIVATE_SOURCES
 	src/SoftEngineCore/Rendering/OpenGL/Renderer_OpenGl.cpp
 	src/SoftEngineCore/Modules/UIModule.cpp
 	src/SoftEngineCore/Input.cpp
+	src/SoftEngineCore/Rendering/OpenGL/Texture2D.cpp
 )
 
 set(ENGINE_ALL_SOURCES
