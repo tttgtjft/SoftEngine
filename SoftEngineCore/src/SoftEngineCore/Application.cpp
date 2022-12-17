@@ -173,35 +173,35 @@ namespace SoftEngine {
 		int channels;
 		unsigned char* data = stbi_load("../../../container.jpg", &width, &height, &channels, 0);
 
+		GLsizei mip_levels = static_cast<GLsizei>(log2(std::max(width, height))) + 1;
 		GLuint textureHandle_Background;
 		glCreateTextures(GL_TEXTURE_2D, 1, &textureHandle_Background);
-		glTextureStorage2D(textureHandle_Background, 1, GL_RGB8, width, height);
+		glTextureStorage2D(textureHandle_Background, mip_levels, GL_RGB8, width, height);
 		glTextureSubImage2D(textureHandle_Background, 0, 0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
 
 		glTextureParameteri(textureHandle_Background, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTextureParameteri(textureHandle_Background, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTextureParameteri(textureHandle_Background, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTextureParameteri(textureHandle_Background, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTextureParameteri(textureHandle_Background, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glGenerateTextureMipmap(textureHandle_Background);
 		glBindTextureUnit(0, textureHandle_Background);
 		
-		width = 0;
-		height = 0;
-		channels = 0;
-		unsigned char* data_ = stbi_load("../../../pubg.jpg", &width, &height, &channels, 0);
+		data = stbi_load("../../../pubg.jpg", &width, &height, &channels, 0);
 	
+		mip_levels = static_cast<GLsizei>(log2(std::max(width, height))) + 1;
 		GLuint textureHandle_Github;
 		glCreateTextures(GL_TEXTURE_2D, 1, &textureHandle_Github);
-		glTextureStorage2D(textureHandle_Github, 1, GL_RGB8, width, height);
-		glTextureSubImage2D(textureHandle_Github, 0, 0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, data_);
+		glTextureStorage2D(textureHandle_Github, mip_levels, GL_RGB8, width, height);
+		glTextureSubImage2D(textureHandle_Github, 0, 0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
 
 		glTextureParameteri(textureHandle_Github, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTextureParameteri(textureHandle_Github, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTextureParameteri(textureHandle_Github, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTextureParameteri(textureHandle_Github, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTextureParameteri(textureHandle_Github, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glGenerateTextureMipmap(textureHandle_Github);
 		glBindTextureUnit(1, textureHandle_Github);
 	
 		delete[] data;
-		delete[] data_;
 
 		//-------------------------------------------------//
 		p_shader_program = std::make_unique<ShaderProgram>(vertex_shader, fragment_shader);
