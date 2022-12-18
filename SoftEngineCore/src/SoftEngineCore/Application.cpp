@@ -25,33 +25,42 @@
 
 namespace SoftEngine {
 
-	GLfloat positions_colors[] = {
-		0.0f, -0.5f, -0.5f,   1.0f, 1.0f, 0.0f,	  2.f, 2.f,
-		0.0f,  0.5f, -0.5f,   0.0f, 1.0f, 1.0f,	  0.f, 2.f,
-		0.0f, -0.5f,  0.5f,   1.0f, 0.0f, 1.0f,	  2.f, 0.f,
-		0.0f,  0.5f,  0.5f,   1.0f, 0.0f, 0.0f,	  0.f, 0.f
+	GLfloat positions_coords[] = {
+		// front
+		-1.0f, -1.0f, -1.0f,   2.f, 2.f,
+		-1.0f,  1.0f, -1.0f,   0.f, 2.f,
+		-1.0f, -1.0f,  1.0f,   2.f, 0.f,
+		-1.0f,  1.0f,  1.0f,   0.f, 0.f,
+
+		// back
+		 1.0f, -1.0f, -1.0f,   2.f, 2.f,
+		 1.0f,  1.0f, -1.0f,   0.f, 2.f,
+		 1.0f, -1.0f,  1.0f,   2.f, 0.f,
+		 1.0f,  1.0f,  1.0f,   0.f, 0.f
 	};
 
 	GLint indices[] = {
-		0, 1, 2, 3, 2, 1
+		0, 1, 2, 3, 2, 1, // front
+		4, 5, 6, 7, 6, 5, // back
+		0, 4, 6, 0, 2, 6, // right
+		1, 5, 3, 3, 7, 5, // left
+		3, 7, 2, 7, 6, 2, // top
+		1, 5, 0, 5, 0, 4  // bottom
 	};
 
 	const char* vertex_shader =
 		R"(#version 460
         layout(location = 0) in vec3 vertex_position;
-        layout(location = 1) in vec3 vertex_color;
-        layout(location = 2) in vec2 texture_coord;
+        layout(location = 1) in vec2 texture_coord;
 
         uniform mat4 model_matrix;
         uniform mat4 view_projection_matrix;
 		uniform int current_frame;
 
-        out vec3 color;
 		out vec2 tex_coord_background;
 		out vec2 tex_coord_github;
 
         void main() {
-           color = vertex_color;
 		   tex_coord_background = texture_coord;
 		   tex_coord_github = texture_coord + vec2(current_frame / 1000.f, current_frame / 1000.f);
            gl_Position = view_projection_matrix * model_matrix * vec4(vertex_position, 1.0);
@@ -59,7 +68,6 @@ namespace SoftEngine {
 
 	const char* fragment_shader =
 		R"(#version 460
-        in vec3 color;
 		in vec2 tex_coord_background;
 		in vec2 tex_coord_github;
 
@@ -69,14 +77,13 @@ namespace SoftEngine {
         out vec4 frag_color;
 
         void main() {
-           //frag_color = vec4(color, 1.0);
 		   frag_color = texture(InTexture_Background, tex_coord_background) * texture(InTexture_Github, tex_coord_github);
         })";
 
 	std::unique_ptr<ShaderProgram> p_shader_program;
 
-	std::unique_ptr<VertexBuffer> p_positions_colors_vbo;
-	std::unique_ptr<IndexBuffer> p_index_buffer;
+	std::unique_ptr<VertexBuffer> p_cube_positions_vbo;
+	std::unique_ptr<IndexBuffer> p_cube_index_buffer;
 	std::unique_ptr<VertexArray> p_vao;
 	std::unique_ptr<Texture2D> p_texture_background;
 	std::unique_ptr<Texture2D> p_texture_github;
@@ -191,19 +198,18 @@ namespace SoftEngine {
 			return false;
 		}
 
-		BufferLayout buffer_layout_vec3_vec3_vec2
+		BufferLayout buffer_layout_vec3_vec2
 		{
-			ShaderDataType::Float3,
 			ShaderDataType::Float3,
 			ShaderDataType::Float2
 		};
 
-		p_positions_colors_vbo = std::make_unique<VertexBuffer>(positions_colors, sizeof(positions_colors), buffer_layout_vec3_vec3_vec2);
-		p_index_buffer = std::make_unique<IndexBuffer>(indices, sizeof(indices) / sizeof(GLint));
+		p_cube_positions_vbo = std::make_unique<VertexBuffer>(positions_coords, sizeof(positions_coords), buffer_layout_vec3_vec2);
+		p_cube_index_buffer = std::make_unique<IndexBuffer>(indices, sizeof(indices) / sizeof(GLint));
 		p_vao = std::make_unique<VertexArray>();
 
-		p_vao->add_vertex_buffer(*p_positions_colors_vbo);
-		p_vao->set_index_buffer(*p_index_buffer);
+		p_vao->add_vertex_buffer(*p_cube_positions_vbo);
+		p_vao->set_index_buffer(*p_cube_index_buffer);
 		//-------------------------------------------------//
 
 		int current_frame = 0;
@@ -232,7 +238,7 @@ namespace SoftEngine {
 
 			glm::mat4 model_matrix = translate_matrix * rotate_matrix * scale_matrix;
 			p_shader_program->set_matrix4("model_matrix", model_matrix);
-			p_shader_program->set_int("current_frame", current_frame++);
+			//p_shader_program->set_int("current_frame", current_frame++);
 
 			camera.set_projection_mode(b_perspective_camera ? Camera::ProjectionMode::Perspective : Camera::ProjectionMode::Orthographic);
 			p_shader_program->set_matrix4("view_projection_matrix", camera.get_projection_matrix() * camera.get_view_matrix());
