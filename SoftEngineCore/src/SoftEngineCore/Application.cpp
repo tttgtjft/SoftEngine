@@ -81,7 +81,6 @@ namespace SoftEngine {
         })";
 
 	std::unique_ptr<ShaderProgram> p_shader_program;
-
 	std::unique_ptr<VertexBuffer> p_cube_positions_vbo;
 	std::unique_ptr<IndexBuffer> p_cube_index_buffer;
 	std::unique_ptr<VertexArray> p_vao;
@@ -93,6 +92,14 @@ namespace SoftEngine {
 	float translate[3] = { 0.f, 0.f, 0.f };
 	float m_background_color[4] = { 0.45f, 0.45f, 0.45f, 1.f };
 
+	std::array<glm::vec3, 5> positions = {
+		glm::vec3(-2.f, -2.f, -4.f),
+		glm::vec3(-5.f,  0.f,  3.f),
+		glm::vec3( 2.f,  1.f, -2.f),
+		glm::vec3( 4.f, -3.f,  3.f),
+		glm::vec3( 1.f, -7.f,  1.f),
+	};
+
 	Application::Application()
 	{	
 		LOG_INFO("Starting Application");
@@ -103,9 +110,57 @@ namespace SoftEngine {
 		LOG_INFO("Closing Application");
 	}
 
+	void Application::draw()
+	{
+		Renderer_OpenGl::set_clear_color(m_background_color[0], m_background_color[1], m_background_color[2], m_background_color[3]);
+		Renderer_OpenGl::clear();
+
+		p_shader_program->bind();
+
+		glm::mat4 scale_matrix(scale[0], 0, 0, 0,
+			0, scale[1], 0, 0,
+			0, 0, scale[2], 0,
+			0, 0, 0, 1);
+		float rotate_in_radians = glm::radians(rotate);
+		glm::mat4 rotate_matrix(cos(rotate_in_radians), sin(rotate_in_radians), 0, 0,
+			-sin(rotate_in_radians), cos(rotate_in_radians), 0, 0,
+			0, 0, 1, 0,
+			0, 0, 0, 1);
+
+		glm::mat4 translate_matrix(1, 0, 0, 0,
+			0, 1, 0, 0,
+			0, 0, 1, 0,
+			translate[0], translate[1], translate[2], 1);
+
+		glm::mat4 model_matrix = translate_matrix * rotate_matrix * scale_matrix;
+		p_shader_program->set_matrix4("model_matrix", model_matrix);
+		//p_shader_program->set_int("current_frame", current_frame++);
+
+		p_shader_program->set_matrix4("view_projection_matrix", camera.get_projection_matrix() * camera.get_view_matrix());
+		Renderer_OpenGl::draw(*p_vao);
+
+		for (const glm::vec3& current_position : positions)
+		{
+			glm::mat4 translate_matrix(1, 0, 0, 0,
+				0, 1, 0, 0,
+				0, 0, 1, 0,
+				current_position[0], current_position[1], current_position[2], 1);
+			p_shader_program->set_matrix4("model_matrix", translate_matrix);
+			Renderer_OpenGl::draw(*p_vao);
+		}
+
+		UIModule::on_ui_draw_begin();
+		on_ui_draw();
+		UIModule::on_ui_draw_end();
+
+		m_pWindow->on_update();
+		on_update();
+	}
+
 	int Application::start(unsigned int window_width, unsigned int window_height, const char* title)
 	{
 		m_pWindow = std::make_unique<Window>(title, window_width, window_height);
+		camera.set_viewport_size(static_cast<float>(window_width), static_cast<float>(window_height));
 
 		m_event_dispatcher.add_event_listener<EventMouseMoved>(
 			[](EventMouseMoved& event)
@@ -115,9 +170,11 @@ namespace SoftEngine {
 		);
 
 		m_event_dispatcher.add_event_listener<EventWindowResize>(
-			[](EventWindowResize& event)
+			[&](EventWindowResize& event)
 			{
 				LOG_INFO("[Resized] Changed size to {0}x{1}", event.width, event.height);
+				camera.set_viewport_size(event.width, event.height);
+				draw();
 			}
 		);
 
@@ -125,7 +182,7 @@ namespace SoftEngine {
 			[&](EventWindowClose& event)
 			{
 				LOG_INFO("[WindowClose]");
-				m_bCloseWindow = true;
+				close();
 			}
 		);
 
@@ -214,58 +271,10 @@ namespace SoftEngine {
 
 		int current_frame = 0;
 
+		Renderer_OpenGl::enable_depth_testing();
 		while (!m_bCloseWindow)
 		{
-			Renderer_OpenGl::set_clear_color(m_background_color[0], m_background_color[1], m_background_color[2], m_background_color[3]);
-			Renderer_OpenGl::clear();
-
-			p_shader_program->bind();
-
-			glm::mat4 scale_matrix(scale[0], 0, 0, 0,
-				0, scale[1], 0, 0,
-				0, 0, scale[2], 0,
-				0, 0, 0, 1);
-			float rotate_in_radians = glm::radians(rotate);
-			glm::mat4 rotate_matrix(cos(rotate_in_radians), sin(rotate_in_radians), 0, 0,
-				-sin(rotate_in_radians), cos(rotate_in_radians), 0, 0,
-				0, 0, 1, 0,
-				0, 0, 0, 1);
-
-			glm::mat4 translate_matrix(1, 0, 0, 0,
-				0, 1, 0, 0,
-				0, 0, 1, 0,
-				translate[0], translate[1], translate[2], 1);
-
-			glm::mat4 model_matrix = translate_matrix * rotate_matrix * scale_matrix;
-			p_shader_program->set_matrix4("model_matrix", model_matrix);
-			//p_shader_program->set_int("current_frame", current_frame++);
-
-			camera.set_projection_mode(b_perspective_camera ? Camera::ProjectionMode::Perspective : Camera::ProjectionMode::Orthographic);
-			p_shader_program->set_matrix4("view_projection_matrix", camera.get_projection_matrix() * camera.get_view_matrix());
-
-			Renderer_OpenGl::draw(*p_vao);
-
-			//-------------------------------------------------//
-			UIModule::on_ui_draw_begin();
-
-			bool show;
-			UIModule::ShowExampleAppDockSpace(&show);
-			ImGui::ShowDemoWindow();
-
-			ImGui::Begin("Background Color Window");
-			ImGui::ColorEdit4("Background Color", m_background_color);
-			ImGui::SliderFloat3("scale", scale, 0.f, 2.f);
-			ImGui::SliderFloat("rotate", &rotate, 0.f, 360.f);
-			ImGui::SliderFloat3("translate", translate, -1.f, 1.f);
-			ImGui::End();
-
-			on_ui_draw();
-
-			UIModule::on_ui_draw_end();
-			//-------------------------------------------------//
-
-			m_pWindow->on_update();
-			on_update();
+			draw();
 		}
 		p_texture_background->~Texture2D();
 		p_texture_github->~Texture2D();
@@ -278,6 +287,11 @@ namespace SoftEngine {
 	glm::vec2 Application::get_current_cursor_position() const
 	{
 		return m_pWindow->get_current_cursor_position();
+	}
+
+	void Application::close()
+	{
+		m_bCloseWindow = true;
 	}
 
 }

@@ -19,6 +19,7 @@ namespace SoftEngine {
 		Application& operator=(Application&&) = delete;
 
 		virtual int start(unsigned int window_weight, unsigned int window_height, const char* title);
+		void close();
 
 		virtual void on_update() {}
 		virtual void on_ui_draw() {}
@@ -31,10 +32,15 @@ namespace SoftEngine {
 
 		float camera_position[3] = { 0.0f, 0.0f, 1.0f };
 		float camera_rotation[3] = { 0.0f, 0.0f, 0.0f };
+		float camera_fov = 60.f;
+		float camera_near_plane = 0.1f;
+		float camera_far_plane = 100.f;
 		bool b_perspective_camera = true;
 		Camera camera{glm::vec3(-5.f, 0.f, 0.f)};
 
 	private:
+		void draw();
+
 		std::unique_ptr<class Window> m_pWindow;
 
 		EventDispatcher m_event_dispatcher;

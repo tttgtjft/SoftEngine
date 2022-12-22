@@ -39,7 +39,17 @@ namespace SoftEngine {
 
 	void Renderer_OpenGl::clear()
 	{
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	}
+
+	void Renderer_OpenGl::enable_depth_testing()
+	{
+		glEnable(GL_DEPTH_TEST);
+	}
+
+	void Renderer_OpenGl::disable_depth_testing()
+	{
+		glDisable(GL_DEPTH_TEST);
 	}
 
 	void Renderer_OpenGl::set_viewport(const unsigned int width, const unsigned int height, const unsigned int left_offset, const unsigned int bottom_offset)
