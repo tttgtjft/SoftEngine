@@ -12,6 +12,12 @@ class SoftEngineEditor : public SoftEngine::Application
 {
 	double m_initial_mouse_pos_x = 0.0;
 	double m_initial_mouse_pos_y = 0.0;
+	float camera_position[3] = { 0.0f, 0.0f, 1.0f };
+	float camera_rotation[3] = { 0.0f, 0.0f, 0.0f };
+	float camera_fov = 60.f;
+	float camera_near_plane = 0.1f;
+	float camera_far_plane = 100.f;
+	bool b_perspective_camera = true;
 
 	virtual void on_update() override 
 	{
@@ -19,27 +25,27 @@ class SoftEngineEditor : public SoftEngine::Application
 		glm::vec3 rotation_delta = { 0.0f, 0.0f, 0.0f };
 		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_W))
 		{
-			movement_delta.x += 0.01f;
+			movement_delta.x += 0.1f;
 		}
 		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_S))
 		{
-			movement_delta.x -= 0.01f;
+			movement_delta.x -= 0.1f;
 		}
 		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_A))
 		{
-			movement_delta.y -= 0.01f;
+			movement_delta.y -= 0.1f;
 		}
 		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_D))
 		{
-			movement_delta.y += 0.01f;
+			movement_delta.y += 0.1f;
 		}
 		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_Q))
 		{
-			movement_delta.z -= 0.01f;
+			movement_delta.z -= 0.1f;
 		}
 		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_E))
 		{
-			movement_delta.z += 0.01f;
+			movement_delta.z += 0.1f;
 		}
 		if (SoftEngine::Input::is_key_pressed(SoftEngine::KeyCode::KEY_UP))
 		{
@@ -159,6 +165,12 @@ class SoftEngineEditor : public SoftEngine::Application
 		camera_far_plane = camera.get_far_clip_plane();
 
 		ImGui::Begin("Editor");
+		ImGui::SliderFloat3("Light source position", light_source_position, -10.f, 10.f);
+		ImGui::ColorEdit3("Light source color", light_source_color);
+		ImGui::SliderFloat("Ambient factor", &ambient_factor, 0.f, 1.f);
+		ImGui::SliderFloat("Diffuse factor", &diffuse_factor, 0.f, 1.f);
+		ImGui::SliderFloat("Specular factor", &specular_factor, 0.f, 1.f);
+		ImGui::SliderFloat("Shininess", &shininess, 1.f, 128.f);
 		if (ImGui::SliderFloat3("Camera position", camera_position, -10.f, 10.f))
 		{
 			camera.set_position(glm::vec3(camera_position[0], camera_position[1], camera_position[2]));

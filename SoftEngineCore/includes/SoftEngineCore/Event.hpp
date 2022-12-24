@@ -19,7 +19,6 @@ namespace SoftEngine {
 		MouseButtonReleased,
 		MouseMoved,
 
-
 		EventCount
 	};
 

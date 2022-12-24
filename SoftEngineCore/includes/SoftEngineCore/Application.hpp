@@ -30,13 +30,14 @@ namespace SoftEngine {
 
 		glm::vec2 get_current_cursor_position() const;
 
-		float camera_position[3] = { 0.0f, 0.0f, 1.0f };
-		float camera_rotation[3] = { 0.0f, 0.0f, 0.0f };
-		float camera_fov = 60.f;
-		float camera_near_plane = 0.1f;
-		float camera_far_plane = 100.f;
-		bool b_perspective_camera = true;
 		Camera camera{glm::vec3(-5.f, 0.f, 0.f)};
+
+		float light_source_position[3] = { 0.0f, 0.0f, 0.0f };
+		float light_source_color[3] = { 1.f, 1.f, 1.f };
+		float ambient_factor = 0.1f;
+		float diffuse_factor = 1.0f;
+		float specular_factor = 0.5f;
+		float shininess = 32.f;
 
 	private:
 		void draw();
